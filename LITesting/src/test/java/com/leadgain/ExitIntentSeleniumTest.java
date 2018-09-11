@@ -1,6 +1,9 @@
 package com.leadgain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -225,6 +228,7 @@ public static Logger LOGGER = Logger.getLogger(ExitIntentSeleniumTest.class);
 	    	this.webDriver.get(exitIntenetUrl);
 	    	JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 	    	getScreenShot();
+	    	String before_login =webDriver.getCurrentUrl();
 	    	Thread.sleep(2000);
 	    	webDriver.findElement(By.id("username")).sendKeys(email);
 	    	Thread.sleep(2000);
@@ -233,17 +237,22 @@ public static Logger LOGGER = Logger.getLogger(ExitIntentSeleniumTest.class);
 	    	Thread.sleep(2000);
 	    	webDriver.findElement(By.cssSelector("button[class='ant-btn ant-btn-primary ant-btn-lg']")).click();
 		    Thread.sleep(1000);
-		    assertThat(true);
-		    webDriver.findElement(By.xpath("//a[contains(@href,\"#/changePassword\")]")).click();
-	    	Thread.sleep(3000);
-	    	webDriver.findElement(By.id("oldpassword")).sendKeys("YITQ6XWP");
-	    	Thread.sleep(2000);
-	    	webDriver.findElement(By.id("password")).sendKeys("kashmishah");
-	    	Thread.sleep(2000);
-	    	webDriver.findElement(By.id("confirm")).sendKeys("kashmishah");
-	    	Thread.sleep(2000);
-	    	webDriver.findElement(By.cssSelector("button[class='ant-btn ant-btn-primary ant-btn-lg']")).click();
-		    Thread.sleep(7000);
+		    String after_login =webDriver.getCurrentUrl();
+		    
+		    System.out.println(!before_login.equals(after_login));
+		//    assertThat(before_login, is(after_login));
+		   assertTrue(!before_login.equals(after_login));
+		    
+//		    webDriver.findElement(By.xpath("//a[contains(@href,\"#/changePassword\")]")).click();
+//	    	Thread.sleep(3000);
+//	    	webDriver.findElement(By.id("oldpassword")).sendKeys("YITQ6XWP");
+//	    	Thread.sleep(2000);
+//	    	webDriver.findElement(By.id("password")).sendKeys("kashmishah");
+//	    	Thread.sleep(2000);
+//	    	webDriver.findElement(By.id("confirm")).sendKeys("kashmishah");
+//	    	Thread.sleep(2000);
+//	    	webDriver.findElement(By.cssSelector("button[class='ant-btn ant-btn-primary ant-btn-lg']")).click();
+//		    Thread.sleep(7000);
 		    
 	 }
 	 
