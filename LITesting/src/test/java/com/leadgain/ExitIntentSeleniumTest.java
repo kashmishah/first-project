@@ -241,7 +241,7 @@ public static Logger LOGGER = Logger.getLogger(ExitIntentSeleniumTest.class);
 		    
 		    System.out.println(!before_login.equals(after_login));
 		//    assertThat(before_login, is(after_login));
-		   assertTrue(!before_login.equals(after_login));
+		   assertTrue(before_login.equals(after_login));
 		    
 //		    webDriver.findElement(By.xpath("//a[contains(@href,\"#/changePassword\")]")).click();
 //	    	Thread.sleep(3000);
